@@ -18,6 +18,7 @@ substitutions:
   # For meter versions:
   # >= v1.3: 7305
   voltage_cal: '13839'
+  frequency: 50Hz
   disable_entities: "false" # set to "false" to have all entities show up in Home Assistant automatically
   disable_webserver: "false" # set to "true" to disable webserver listening on port 80.
 
