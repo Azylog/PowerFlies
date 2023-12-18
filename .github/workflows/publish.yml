@@ -6,6 +6,8 @@ on:
       - master
     paths:
       - 'v1.1/software/esphome/**'
+on: workflow_call
+
 
 permissions:
   contents: write
