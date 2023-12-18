@@ -26,6 +26,9 @@ dashboard_import:
   package_import_url: github://Enerwize/PowerFlies/v1.1/software/esphome/powerflie-1addon-factory.yaml
   import_full_config: false # or true
 
+esp32_improv:
+  authorizer: none
+
 packages:
   device_base: !include common/device_base.yaml
   ic1: !include

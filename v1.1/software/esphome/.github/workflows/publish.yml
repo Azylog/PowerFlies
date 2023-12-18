@@ -1,0 +1,16 @@
+name: Build and Publish ESPHome firmware and website
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    uses: esphome/workflows/.github/workflows/publish.yml@main
+    with:
+      files: powerflie-noaddon-factory.yaml, powerflie-1addon-factory.yaml, powerflie-2addons-factory.yaml
+      name: 6chan-esphome
