@@ -1,12 +1,12 @@
-name: Build and Publish ESPHome firmware and website
+name: Build and Publish PowerFlies firmware and website
 
 on:
+  workflow_call:
   push:
     branches:
       - master
     paths:
       - 'v1.1/software/esphome/**'
-  workflow_call:
 
 permissions:
   contents: write
