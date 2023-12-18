@@ -1,0 +1,9 @@
+{
+  "chipFamily": "ESP32",
+  "parts": [
+    {
+      "path": "powerflie-2addons-esp32/powerflie-2addons-esp32.bin",
+      "offset": 0
+    }
+  ]
+}
