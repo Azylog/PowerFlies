@@ -2,6 +2,8 @@ name: CI
 
 on:
   pull_request:
+    paths:
+      - 'v1.1/software/esphome/**'
 
 jobs:
   ci:

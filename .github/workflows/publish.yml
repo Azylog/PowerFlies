@@ -12,5 +12,5 @@ jobs:
   build:
     uses: esphome/workflows/.github/workflows/publish.yml@main
     with:
-      files: powerflie-noaddon-factory.yaml, powerflie-1addon-factory.yaml, powerflie-2addons-factory.yaml
-      name: 6chan-esphome
+      files: v1.1/software/esphome/powerflie-noaddon-factory.yaml, v1.1/software/esphome/powerflie-1addon-factory.yaml, v1.1/software/esphome/powerflie-2addons-factory.yaml
+      name: Enerwize-powerflies-esphome
