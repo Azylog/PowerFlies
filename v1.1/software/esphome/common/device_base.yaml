@@ -47,7 +47,6 @@ web_server:
   log: false
   local: true
 
-
 sensor:
   - platform: wifi_signal
     name: ${disp_name} WiFi
