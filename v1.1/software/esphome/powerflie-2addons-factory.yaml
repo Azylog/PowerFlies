@@ -20,7 +20,7 @@ substitutions:
   voltage_cal: '13839'
   frequency: 50Hz
   disable_entities: "false" # set to "false" to have all entities show up in Home Assistant automatically
-  disable_webserver: "false" # set to "true" to disable webserver listening on port 80.
+  disable_webserver: "false" # set to "true" to disable webserver listening on port 80
 
 dashboard_import:
   package_import_url: github://Enerwize/PowerFlies/v1.1/software/esphome/powerflie-2addons-factory.yaml

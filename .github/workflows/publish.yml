@@ -8,7 +8,6 @@ on:
       - 'v1.1/software/esphome/**'
   workflow_call:
 
-
 permissions:
   contents: write
 
