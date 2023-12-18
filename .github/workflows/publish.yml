@@ -3,7 +3,9 @@ name: Build and Publish ESPHome firmware and website
 on:
   push:
     branches:
-      - main
+      - master
+    paths:
+      - 'v1.1/software/esphome/**'      
 
 permissions:
   contents: write
