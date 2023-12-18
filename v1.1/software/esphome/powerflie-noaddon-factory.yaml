@@ -1,0 +1,45 @@
+substitutions:
+  # Change the disp_name to something you want
+  disp_name: powerflie-noaddon
+  friendly_name: 'PowerFlie Energy Meter'
+  # Interval of how often the power is updated
+  update_time: 5s
+  # Current Transformers:
+  # 20A/25mA SCT-006: 11143
+  # 30A/1V SCT-013-030: 8650
+  # 50A/1V SCT-013-050: 15420
+  # 80A/26.6mA SCT-010: 41660
+  # 100A/50ma SCT-013-000: 27518
+  # 120A/40mA: SCT-016: 41787
+  # 200A/100mA SCT-024: 27518
+  # 200A/50mA SCT-024: 55036
+  current_cal: '27518'
+  # Jameco 9VAC Transformer:
+  # For meter versions:
+  # >= v1.3: 7305
+  voltage_cal: '13839'
+  disable_entities: "false" # set to "false" to have all entities show up in Home Assistant automatically
+  disable_webserver: "false" # set to "true" to disable webserver listening on port 80.
+
+dashboard_import:
+  package_import_url: github://Enerwize/PowerFlies/v1.1/software/esphome/powerflie-noaddon-factory.yaml
+  import_full_config: false # or true
+
+packages:
+  device_base: !include common/device_base.yaml
+  ic1: !include
+    file: common/sensor/ic-power.yaml
+    vars:
+      first_CT_num: 1
+      second_CT_num: 2
+      third_CT_num: 3
+      cs_pin: 5
+      ic_number: 1
+  ic2: !include
+    file: common/sensor/ic-power.yaml
+    vars:
+      first_CT_num: 4
+      second_CT_num: 5
+      third_CT_num: 6
+      cs_pin: 4
+      ic_number: 2

@@ -1,0 +1,94 @@
+esphome:
+    name: ${disp_name}
+    name_add_mac_suffix: true
+    project:
+      name: "Enerwize.powerflie"
+      version: "0.1.2"
+
+esp32:
+  board: az-delivery-devkit-v4
+  framework:
+    type: arduino
+
+preferences:
+    flash_write_interval: 10min
+
+wifi:
+  # Set up a wifi access point
+  ap:
+    password: "12345678"
+
+# In combination with the `ap` this allows the user
+# to provision wifi credentials to the device.
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+#    encryption:
+#        key:
+
+# https://esphome.io/components/ota.html
+ota:
+    on_error:
+        then:
+            - button.press: restart_button
+
+spi:
+  clk_pin: 18
+  miso_pin: 19
+  mosi_pin: 23
+
+web_server:
+  port: 80
+  ota: false
+  log: false
+  local: true
+
+
+sensor:
+  - platform: wifi_signal
+    name: ${disp_name} WiFi
+    update_interval: 60s
+
+  - platform: uptime
+    name: Uptime Sensor
+
+button:
+  - platform: restart
+    id: restart_button
+    name: $friendly_name Restart Firmware
+    entity_category: diagnostic
+    disabled_by_default: $disable_entities
+
+time:
+  - platform: sntp
+    id: sntp_time
+
+script:
+  - id: script_save_changes
+    mode: restart
+    then:
+    - delay: 1s
+    - lambda: global_preferences->sync();
+
+text_sensor:
+  - platform: template
+    name: "Project"
+    lambda: |-
+      return to_string(ESPHOME_PROJECT_NAME);
+
+  - platform: template
+    name: "Version"
+    lambda: |-
+      return to_string(ESPHOME_PROJECT_VERSION);
+
+# Send IP Address to HA.
+# [https://esphome.io/components/text_sensor/wifi_info.html](https://esphome.io/components/text_sensor/wifi_info.html)
+  - platform: wifi_info
+    ip_address:
+        name: $friendly_name IP Address
+        entity_category: diagnostic
+        disabled_by_default: $disable_entities

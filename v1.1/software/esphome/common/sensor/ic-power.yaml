@@ -1,0 +1,66 @@
+sensor:
+  - platform: atm90e32
+    cs_pin: ${cs_pin}
+    phase_a:
+      voltage:
+        name: ${disp_name} IC${ic_number} Volts
+        id: ic${ic_number}Volts
+        accuracy_decimals: 1
+      current:
+        name: ${disp_name} CT${first_CT_num} Amps
+        id: ct${first_CT_num}Amps
+      power:
+        name: ${disp_name} CT${first_CT_num} Watts
+        id: ct${first_CT_num}Watts
+      gain_voltage: ${voltage_cal}
+      gain_ct: ${current_cal}
+    phase_b:
+      current:
+        name: ${disp_name} CT${second_CT_num} Amps
+        id: ct${second_CT_num}Amps
+      power:
+        name: ${disp_name} CT${second_CT_num} Watts
+        id: ct${second_CT_num}Watts
+      gain_voltage: ${voltage_cal}
+      gain_ct: ${current_cal}
+    phase_c:
+      current:
+        name: ${disp_name} CT${third_CT_num} Amps
+        id: ct${third_CT_num}Amps
+      power:
+        name: ${disp_name} CT${third_CT_num} Watts
+        id: ct${third_CT_num}Watts
+      gain_voltage: ${voltage_cal}
+      gain_ct: ${current_cal}
+    frequency:
+      name: ${disp_name} IC${ic_number} Freq
+    line_frequency: ${frequency}
+    gain_pga: 1X
+    update_interval: ${update_time}
+
+  - platform: total_daily_energy
+    name: ${disp_name} CT${first_CT_num} kWh
+    power_id: ct${first_CT_num}Watts
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+
+  - platform: total_daily_energy
+    name: ${disp_name} CT${second_CT_num} kWh
+    power_id: ct${second_CT_num}Watts
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+
+  - platform: total_daily_energy
+    name: ${disp_name} CT${third_CT_num} kWh
+    power_id: ct${third_CT_num}Watts
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
