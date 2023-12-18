@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - 'v1.1/software/esphome/**'      
+      - 'v1.1/software/esphome/**'
 
 permissions:
   contents: write
