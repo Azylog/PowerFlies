@@ -18,7 +18,6 @@ preferences:
 wifi:
   fast_connect: true
   passive_scan: true
-  output_power: 15dB
   # Set up a wifi access point
   ap:
     password: "12345678"
