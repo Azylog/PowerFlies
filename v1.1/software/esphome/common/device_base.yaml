@@ -1,12 +1,14 @@
 esphome:
     name: ${disp_name}
+    build_path: ./build/${disp_name}-${variant}
     name_add_mac_suffix: true
+    min_version: 2023.2.4
     project:
       name: "Enerwize.powerflie"
       version: "0.1.2"
 
 esp32:
-  board: az-delivery-devkit-v4
+  board: nodemcu-32s
   framework:
     type: arduino
 
@@ -14,6 +16,9 @@ preferences:
     flash_write_interval: 10min
 
 wifi:
+  fast_connect: true
+  passive_scan: true
+  output_power: 15dB
   # Set up a wifi access point
   ap:
     password: "12345678"

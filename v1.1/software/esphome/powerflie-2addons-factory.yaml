@@ -1,7 +1,8 @@
 substitutions:
   # Change the disp_name to something you want
-  disp_name: powerflie-2addons
+  disp_name: powerflie
   friendly_name: 'PowerFlie Energy Meter'
+  variant: 2addons
   # Interval of how often the power is updated
   update_time: 5s
   # Current Transformers:

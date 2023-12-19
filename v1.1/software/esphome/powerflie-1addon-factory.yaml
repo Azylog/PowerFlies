@@ -1,7 +1,8 @@
 substitutions:
   # Change the disp_name to something you want
-  disp_name: powerflie-1addon
+  disp_name: powerflie
   friendly_name: 'PowerFlie Energy Meter'
+  variant: 1addon
   # Interval of how often the power is updated
   update_time: 5s
   # Current Transformers:
@@ -25,9 +26,6 @@ substitutions:
 dashboard_import:
   package_import_url: github://Enerwize/PowerFlies/v1.1/software/esphome/powerflie-1addon-factory.yaml
   import_full_config: false # or true
-
-esp32_improv:
-  authorizer: none
 
 packages:
   device_base: !include common/device_base.yaml
