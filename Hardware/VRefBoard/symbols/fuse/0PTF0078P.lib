@@ -1,0 +1,23 @@
+EESchema-LIBRARY Version 2.3
+#encoding utf-8
+#SamacSys ECAD Model 0PTF0078P
+#/1221652/1261198/2.50/2/4/Undefined or Miscellaneous
+DEF 0PTF0078P U 0 30 Y Y 1 F N
+F0 "U" 650 300 50 H V L CNN
+F1 "0PTF0078P" 650 200 50 H V L CNN
+F2 "0PTF0078P" 650 100 50 H I L CNN
+F3 "https://media.digikey.com/pdf/Data%20Sheets/Littelfuse%20PDFs/PTF075_77_78.pdf" 650 0 50 H I L CNN
+F4 "FUSEHOLDER-OPEN 5X20MM UL94V0 PITCH 22/6" 650 -100 50 H I L CNN "Description"
+F5 "11.5" 650 -200 50 H I L CNN "Height"
+F6 "576-0PTF0078P" 650 -300 50 H I L CNN "Mouser Part Number"
+F7 "https://www.mouser.co.uk/ProductDetail/Littelfuse/0PTF0078P?qs=Co4VkB5J4%2Fsczy6gG8s%2FsA%3D%3D" 650 -400 50 H I L CNN "Mouser Price/Stock"
+F8 "LITTELFUSE" 650 -500 50 H I L CNN "Manufacturer_Name"
+F9 "0PTF0078P" 650 -600 50 H I L CNN "Manufacturer_Part_Number"
+DRAW
+X 1 1 0 0 200 R 50 50 0 0 P
+X 2 2 0 -100 200 R 50 50 0 0 P
+P 5 0 1 6 200 100 600 100 600 -200 200 -200 200 100 N
+ENDDRAW
+ENDDEF
+#
+#End Library

@@ -1,0 +1,21 @@
+{
+    "parameterSets": {
+        "valeurs de conception par défaut": {
+            "$fn": "60",
+            "AddonHeight": "14",
+            "Addons": "0",
+            "BoxThickness": "2.5",
+            "DistanceBetweenObjects": "10",
+            "InteriorBoxHeight": "70",
+            "InteriorBoxWidth": "61.2",
+            "ShowBoards": "true",
+            "ShowCase": "true",
+            "ShowCaseAssembled": "false",
+            "ShowLargeHalf": "true",
+            "ShowLid": "false",
+            "ShowSmallHalf": "true",
+            "SplitHeight": "13"
+        }
+    },
+    "fileFormatVersion": "1"
+}

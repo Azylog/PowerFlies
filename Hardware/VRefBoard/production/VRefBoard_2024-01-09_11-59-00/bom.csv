@@ -1,0 +1,5 @@
+﻿Designator,Footprint,Quantity,Value,LCSC Part #
+F1,0PTF0078P,1,630mA,
+"H1, H2, H3, H4",MountingHole_2.5mm,4,MountingHole,
+"J1, J2","TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",2,Screw_Terminal_01x02,
+T1,44230,1,44230,

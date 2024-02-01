@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP 44230
+D Transformer: encapsulated; 5VA; 230VAC; 9V; 556mA; Mounting: PCB
+K
+F https://componentsearchengine.com/Datasheets/2/44230.pdf
+$ENDCMP
+#
+#End Doc Library

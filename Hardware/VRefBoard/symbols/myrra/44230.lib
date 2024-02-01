@@ -1,0 +1,27 @@
+EESchema-LIBRARY Version 2.3
+#encoding utf-8
+#SamacSys ECAD Model 44230
+#/285538/1261198/2.50/6/0/Transformer
+DEF 44230 T 0 30 Y Y 1 F N
+F0 "T" 1050 300 50 H V L CNN
+F1 "44230" 1050 200 50 H V L CNN
+F2 "44230" 1050 100 50 H I L CNN
+F3 "https://componentsearchengine.com/Datasheets/2/44230.pdf" 1050 0 50 H I L CNN
+F4 "Transformer: encapsulated; 5VA; 230VAC; 9V; 556mA; Mounting: PCB" 1050 -100 50 H I L CNN "Description"
+F5 "32.8" 1050 -200 50 H I L CNN "Height"
+F6 "" 1050 -300 50 H I L CNN "element14 Part Number"
+F7 "" 1050 -400 50 H I L CNN "element14 Price/Stock"
+F8 "MYRRA" 1050 -500 50 H I L CNN "Manufacturer_Name"
+F9 "44230" 1050 -600 50 H I L CNN "Manufacturer_Part_Number"
+DRAW
+X PRI_1 1 1200 0 200 L 50 50 0 0 P
+X PRI_2 5 1200 -100 200 L 50 50 0 0 P
+X NC_1 6 0 -300 200 R 50 50 0 0 P
+X SEC_1 7 0 -200 200 R 50 50 0 0 P
+X SEC_2 9 0 -100 200 R 50 50 0 0 P
+X NC_2 10 0 0 200 R 50 50 0 0 P
+P 5 0 1 6 200 100 1000 100 1000 -400 200 -400 200 100 N
+ENDDRAW
+ENDDEF
+#
+#End Library

@@ -1,0 +1,24 @@
+{
+    "Header": {
+        "Comment": "All values are metric (mm)",
+        "CreationDate": "2022-02-24T09:33:48Z",
+        "GenerationSoftware": {
+            "Application": "EAGLE",
+            "Vendor": "Autodesk",
+            "Version": "9.6.2"
+        },
+        "Part": "Single"
+    },
+    "Overall": {
+        "BoardThickness": 1.57,
+        "LayerNumber": 2,
+        "Name": {
+            "ProjectId": "6_channel_esp32_energy_meter"
+        },
+        "Owner": "imie nazwisko <wk.public.access+eagle@gmail.com>",
+        "Size": {
+            "X": 60.96,
+            "Y": 62.23
+        }
+    }
+}
