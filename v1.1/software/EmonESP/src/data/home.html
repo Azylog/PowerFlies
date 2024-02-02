@@ -5,7 +5,7 @@
 <head>
 
   <meta charset="utf-8">
-  <title>PowerFlie</title>
+  <title>PowerFly</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="viewport" content="width=device-width, user-scalable=no" />
   <meta name="description" content="PowerFly">
@@ -238,6 +238,7 @@
       <div id="eight">
         <h2>7. System</h2>
         <div class="itembody-wrapper">
+          <p><b>Hostname:</b> <span data-bind="text: config.hostname"></span></p>
           <p><b>Free RAM:</b> <span data-bind="text: scaleString(status.free_heap(), 1024, 0) + 'K'"></span></p>
           <p><b>Flash Size:</b> <span data-bind="text: scaleString(config.espflash(), 1024, 0) + 'K'"></span></p>
           <p><b>Version:</b> v<span data-bind="text: config.version"></span></p>

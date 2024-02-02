@@ -33,7 +33,6 @@
 #include "esp_wifi.h"
 #include "mqtt.h"
 #include "input.h"
-//#include "emoncms.h"
 #include "ota.h"
 #include "debug.h"
 
@@ -377,6 +376,7 @@ void handleConfig(AsyncWebServerRequest *request) {
   String s = "{";
   s += "\"espflash\":\"" + String(ESP.getFlashChipSize()) + "\",";
   s += "\"version\":\"" + currentfirmware + "\",";
+  s += "\"hostname\":\"" + esp_hostname_full + "\",";
 
   s += "\"ssid\":\"" + esid + "\",";
   s += "\"pass\":\"";

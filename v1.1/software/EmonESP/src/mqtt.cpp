@@ -53,7 +53,7 @@ static int mqtt_connection_error_count = 0;
   String strID = String(ESP.getChipId());
 #endif
 
-const String ha_device = "{\"ids\":\"" + strID + "\",\"name\":\"" + strID +"\",\"sw\":\"EmonESP\",\"mdl\":\"esp32-nodemcu\",\"mf\":\"espressif\",\"sa\":\"\"}";
+const String ha_device = "{\"ids\":\"" + strID + "\",\"name\":\"" + strID +"\",\"sw\":\"PowerflyESP\",\"mdl\":\"PowerFly\",\"mf\":\"Enerwize\",\"sw_version\":\""+BUILD_TAG+"\",\"model\":\"PowerFly1.1\"}";
 
 // -------------------------------------------------------------------
 // MQTT Connect
@@ -192,7 +192,6 @@ void mqtt_publish(const char * data)
       .addConfigVar("stat_cla", "measurement")
       .addConfigVar("name", topic_ptr)
       .addConfigVar("ic", icon)
-      .addConfigVar("entity_category", "diagnostic")
       .addConfigVar("stat_t", "enerwize/"+strID+"/"+topic_ptr)
       .addConfigVar("unique_id", strID+"/"+topic_ptr)
       .addConfigVar("dev", ha_device.c_str());
@@ -298,4 +297,21 @@ void ha_mqtt_setup() {
   .addConfigVar("dev", ha_device.c_str());
 
   mqttclient.publish(powerfly_freeram.getConfigTopic().c_str(),powerfly_freeram.getConfigPayload().c_str());
+
+  HAMqttDevice powerfly_temp(strID+"/temp", HAMqttDevice::SENSOR,"homeassistant");
+
+  powerfly_temp
+  .enableAttributesTopic()
+  .enableStateTopic()
+  .addConfigVar("dev_cla", "data_size")
+  .addConfigVar("unit_of_meas", "°C")
+  .addConfigVar("stat_cla", "measurement")
+  .addConfigVar("name", "Temperature")
+  .addConfigVar("ic", "mdi:thermometer")
+  .addConfigVar("entity_category", "diagnostic")
+  .addConfigVar("stat_t", "enerwize/"+strID+"/temp")
+  .addConfigVar("unique_id", strID+"/temp")
+  .addConfigVar("dev", ha_device.c_str());
+
+  mqttclient.publish(powerfly_temp.getConfigTopic().c_str(),powerfly_temp.getConfigPayload().c_str());
 }

@@ -105,6 +105,7 @@ extern String rssi;
 extern String ipaddress;
 
 // mDNS hostname
+extern const String esp_hostname_full;
 extern const char *esp_hostname;
 
 extern void wifi_setup();

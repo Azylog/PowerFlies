@@ -31,8 +31,8 @@
 
 #include "energy_meter.h"
 #include <Arduino.h>
-#include <EEPROM.h>                   // Save config settings
 #include <ESPAsyncWebServer.h>
+#include <Preferences.h> // Move EEPROM to Preferences
 
 // -------------------------------------------------------------------
 // Load and save the EmonESP config.

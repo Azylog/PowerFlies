@@ -34,22 +34,23 @@ DNSServer dnsServer;                  // Create class DNS server, captive portal
 const byte DNS_PORT = 53;
 */
 
-// Access Point SSID, password & IP address. SSID will be softAP_ssid + chipID to make SSID unique
-const char *softAP_ssid = "emonESP";
-const char *softAP_password = "";
-IPAddress apIP(192, 168, 4, 1);
-IPAddress netMsk(255, 255, 255, 0);
-int apClients = 0;
-
 //set this to false if you do not want the ESP to go into SoftAP mode
 //when the connection to the previously configured main AP is lost.
 //By default it will try to reconnect 3 times within 30 seconds after
 //the connection to wifi is lost, turn on the soft AP, and then
 //try to reconnect to the main AP every 5 min.
-bool startAPonWifiDisconnect = true;
+bool startAPonWifiDisconnect = false;
 
 // hostname for mDNS. Should work at least on windows. Try http://emonesp.local
-const char *esp_hostname = "emonesp";
+const String esp_hostname_full = String("powerfly-") + String((uint32_t)(ESP.getEfuseMac() >> 16), HEX);
+const char *esp_hostname = esp_hostname_full.c_str();
+
+// Access Point SSID, password & IP address. SSID will be softAP_ssid + chipID to make SSID unique
+const char *softAP_ssid = esp_hostname; // SSID is now a copy of esp_hostname for clarity
+const char *softAP_password = "";
+IPAddress apIP(192, 168, 4, 1);
+IPAddress netMsk(255, 255, 255, 0);
+int apClients = 0;
 
 #ifdef WIFI_LED
 int wifiLedState = !WIFI_LED_ON_STATE;
@@ -91,19 +92,15 @@ void startAP() {
   delay(100);
   WiFi.enableAP(true);
   delay(100);
-  WiFi.softAPConfig(apIP, apIP, netMsk);
-
-  // Create Unique SSID e.g "emonESP_XXXXXX"
-  String softAP_ssid_ID =
-#ifdef ESP32
-    String(softAP_ssid) + "_" + String((uint32_t)ESP.getEfuseMac());
-#else
-    String(softAP_ssid) + "_" + String(ESP.getChipId());
-#endif
+  if (!WiFi.softAPConfig(apIP, apIP, netMsk)) {
+      log_e("Failed to assign SoftAP interface");
+  } else {
+      log_i("softAP interface started correctly");
+  }
 
   // Pick a random channel out of 1, 6 or 11
   int channel = (random(3) * 5) + 1;
-  WiFi.softAP(softAP_ssid_ID.c_str(), softAP_password, channel);
+  WiFi.softAP(softAP_ssid,softAP_password,channel,0,2,false);
   delay(200); // Without delay the IP address is sometimes blank
 
   // Setup the DNS server redirecting all the domains to the apIP
@@ -139,11 +136,7 @@ void startClient() {
   delay(100);
   WiFi.begin(esid.c_str(), epass.c_str());
   WiFi.waitForConnectResult(); //yields until wifi connects or not
-#ifdef ESP32
-  WiFi.setHostname(esp_hostname);
-#else
-  WiFi.hostname(esp_hostname);
-#endif
+
 
   delay(50);
 }
@@ -193,7 +186,7 @@ void WiFiEvent(WiFiEvent_t event)
         char tmpStr[40];
         sprintf(tmpStr, "%d.%d.%d.%d", myAddress[0], myAddress[1], myAddress[2], myAddress[3]);
         ipaddress = tmpStr;
-        DBUGS.print("EmonESP IP: ");
+        DBUGS.print("PowerFly IP: ");
         DBUGS.println(tmpStr);
 
         // Copy the connected network and ipaddress to global strings for use in status request
@@ -327,6 +320,11 @@ void wifi_setup() {
     WiFi.persistent(false);
     WiFi.mode(WIFI_OFF);
   */
+  #ifdef ESP32
+    WiFi.setHostname(esp_hostname);
+  #else
+    WiFi.hostname(esp_hostname);
+  #endif
 #ifdef ESP32
   WiFi.onEvent(WiFiEvent);
 
