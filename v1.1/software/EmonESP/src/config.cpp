@@ -27,8 +27,10 @@
 */
 
 #include "emonesp.h"
-#include "energy_meter.h"
+#include "energy_meter.h" // Energy meters config default values
+#include "mqtt.h" // MQTT config default values
 #include "config.h"
+#include "esp_wifi.h"
 
 // Wifi Network Strings
 String esid = "";
@@ -75,8 +77,8 @@ void config_load_settings()
 
   // MQTT settings
   preferences.begin("mqtt", true);
-  mqtt_server = preferences.getString("mqtt_server","");
-  mqtt_topic = preferences.getString("mqtt_topic","");
+  mqtt_server = preferences.getString("mqtt_server",MQTT_SERVER_DEFAULT);
+  mqtt_topic = preferences.getString("mqtt_topic",MQTT_TOPIC_DEFAULT);
   mqtt_feed_prefix = preferences.getString("mqtt_feed_prefix","");
   mqtt_user = preferences.getString("mqtt_user","");
   mqtt_pass = preferences.getString("mqtt_pass","");
@@ -228,6 +230,15 @@ void config_reset()
   preferences.clear();
   preferences.end();
   preferences.begin("mqtt", false);
+  preferences.clear();
+  preferences.end();
+}
+
+void wifi_config_reset()
+{
+  esid = "";
+  epass = "";
+  preferences.begin("wifi", false);
   preferences.clear();
   preferences.end();
 }

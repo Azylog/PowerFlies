@@ -47,6 +47,7 @@
             </table>
             <p><b>IP Address:</b><br><a data-bind="text: status.ipaddress, attr: {href: 'http://'+status.ipaddress()}"></a></p>
             <button id="apoff" data-bind="visible: status.isWifiAccessPoint">Turn off Access Point</button>
+            <button id="wifi_reset" data-bind="visible: status.isWifiClient">Reset Wifi Config</button>
           </div>
 
           <div id="ap-view" data-bind="visible: !status.isWifiClient() &amp;&amp; !wifiConnecting()">

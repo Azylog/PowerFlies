@@ -468,6 +468,32 @@ void handleRst(AsyncWebServerRequest *request) {
 }
 
 // -------------------------------------------------------------------
+// Reset wifi config and restart wifi AP
+// url: /wifireset
+// -------------------------------------------------------------------
+void handleWifiRst(AsyncWebServerRequest *request) {
+  AsyncResponseStream *response;
+  if (false == requestPreProcess(request, response, "text/plain")) {
+    return;
+  }
+
+  wifi_config_reset();
+
+#ifdef ESP32
+  WiFi.disconnect(false, true);
+#else
+  WiFi.disconnect();
+  ESP.eraseConfig();
+#endif
+
+  response->setCode(200);
+  response->print("1");
+  request->send(response);
+
+  wifiRestartTime = millis() + 2000;
+}
+
+// -------------------------------------------------------------------
 // Restart (Reboot)
 // url: /restart
 // -------------------------------------------------------------------
@@ -717,6 +743,7 @@ void web_server_setup()
   server.on("/saveadmin", handleSaveAdmin);
 
   server.on("/reset", handleRst);
+  server.on("/wifireset", handleWifiRst);
   server.on("/restart", handleRestart);
 
   server.on("/scan", handleScan);

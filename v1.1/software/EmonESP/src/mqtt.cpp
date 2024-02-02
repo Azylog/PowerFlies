@@ -46,6 +46,8 @@ static char mqtt_topic_prefix[128] = "";
 static char mqtt_data[64] = "";
 static int mqtt_connection_error_count = 0;
 
+// TODO: removed strID use in favor of already set esp_hostname_full
+//String strID = esp_hostname_full;
 // Set MQTT client name
 #ifdef ESP32
   String strID = "powerfly-"+String((uint32_t)(ESP.getEfuseMac() >> 16), HEX);
@@ -53,7 +55,7 @@ static int mqtt_connection_error_count = 0;
   String strID = String(ESP.getChipId());
 #endif
 
-const String ha_device = "{\"ids\":\"" + strID + "\",\"name\":\"" + strID +"\",\"sw\":\"PowerflyESP\",\"mdl\":\"PowerFly\",\"mf\":\"Enerwize\",\"sw_version\":\""+BUILD_TAG+"\",\"model\":\"PowerFly1.1\"}";
+const String ha_device = "{\"ids\":\"" + strID + "\",\"name\":\"" + strID +"\",\"mdl\":\"PowerFly\",\"mf\":\"Enerwize\",\"sw_version\":\"PowerFlyESP v"+BUILD_TAG+"\",\"model\":\"PowerFly1.1\", \"configuration_url\":\"http://"+strID+".local\"}";
 
 // -------------------------------------------------------------------
 // MQTT Connect
@@ -267,10 +269,9 @@ void ha_mqtt_setup() {
   HAMqttDevice powerfly_rssi(strID+"/rssi", HAMqttDevice::SENSOR,"homeassistant");
 
   powerfly_rssi
-  .enableAttributesTopic()
   .enableStateTopic()
   .addConfigVar("dev_cla", "signal_strength")
-  .addConfigVar("unit_of_meas", "dB")
+  .addConfigVar("unit_of_meas", "dBm")
   .addConfigVar("stat_cla", "measurement")
   .addConfigVar("name", "WiFi RSSI")
   .addConfigVar("ic", "mdi:wifi")
@@ -284,7 +285,6 @@ void ha_mqtt_setup() {
   HAMqttDevice powerfly_freeram(strID+"/freeram", HAMqttDevice::SENSOR,"homeassistant");
 
   powerfly_freeram
-  .enableAttributesTopic()
   .enableStateTopic()
   .addConfigVar("dev_cla", "data_size")
   .addConfigVar("unit_of_meas", "B")
@@ -301,7 +301,6 @@ void ha_mqtt_setup() {
   HAMqttDevice powerfly_temp(strID+"/temp", HAMqttDevice::SENSOR,"homeassistant");
 
   powerfly_temp
-  .enableAttributesTopic()
   .enableStateTopic()
   .addConfigVar("dev_cla", "data_size")
   .addConfigVar("unit_of_meas", "°C")

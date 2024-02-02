@@ -19,19 +19,30 @@ For details on setup, please see the [readme under the Split Single Phase Energy
 - Some branding changes
 - Added Home Assistant MQTT auto-discovery (https://www.home-assistant.io/integrations/mqtt/#mqtt-discovery) (Thanks @plapointe6 !)
 - Moved config storage from (deprecated) EEPROM library to Preferences
-- Broke OTA (!)
 - Slightly changes in networking to make unique and consistent mDNS, DHCP client, MQTT and wifi client name
+- Add some defaults to MQTT
+- Allow reset of Wifi client config only
 
 Original can be found here : https://github.com/CircuitSetup/Expandable-6-Channel-ESP32-Energy-Meter/tree/master/Software/EmonESP
 
 ### To do
 - [ ] Get voltages from add-on board(s)
+- [ ] Set voltage calibration for add-on boards
 - [ ] Allow calibration for add-on boards voltages
 - [X] Move calibration storage from EEPROM to Preferences library
 - [X] Display complete MQTT client name with MAC on web page
 - [X] Change DHCP hostname to match MQTT client name
-- [ ] Default MQTT base topic to enerwize/<hostname>
+- [X] Default MQTT base-topic to enerwize/<hostname>
+- [X] Default MQTT server to 'homeassistant.local'
 - [ ] Correct Firmware web page content to point to this repository
 - [ ] Add web server button to switch quickly from 230V 50 Hz to 120V 60Hz and vice-versa
 - [ ] Reduce HAMqttDevice refresh rate (only needed once at startup)
-- [ ] Make OTA works (partition scheme ?)
+- [X] Make OTA works (partition scheme ?)
+- [ ] Debug 'save failed' message
+- [ ] Show IP address as MQTT topic
+- [ ] Reduce log verbosity on serial
+
+### Calibration well known values
+- SCT-006 20A/25mA : 10895
+- SCT-010 80A/40mA : 27596
+- SCT-013 100A/50mA : 28197

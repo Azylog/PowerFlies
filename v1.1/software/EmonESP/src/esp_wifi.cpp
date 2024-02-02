@@ -41,7 +41,7 @@ const byte DNS_PORT = 53;
 //try to reconnect to the main AP every 5 min.
 bool startAPonWifiDisconnect = false;
 
-// hostname for mDNS. Should work at least on windows. Try http://emonesp.local
+// hostname for mDNS.
 const String esp_hostname_full = String("powerfly-") + String((uint32_t)(ESP.getEfuseMac() >> 16), HEX);
 const char *esp_hostname = esp_hostname_full.c_str();
 

@@ -103,4 +103,9 @@ extern void config_save_wifi(String qsid, String qpass);
 // -------------------------------------------------------------------
 extern void config_reset();
 
+// -------------------------------------------------------------------
+// Reset the Wifi config only
+// -------------------------------------------------------------------
+extern void wifi_config_reset();
+
 #endif // _EMONESP_CONFIG_H

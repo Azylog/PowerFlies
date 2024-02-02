@@ -41,6 +41,9 @@
 #define MQTT_TIMEOUT 3
 #endif
 
+#define MQTT_SERVER_DEFAULT "homeassistant.local"
+#define MQTT_TOPIC_DEFAULT "enerwize/"+esp_hostname_full
+
 // -------------------------------------------------------------------
 // Perform the background MQTT operations. Must be called in the main
 // loop function

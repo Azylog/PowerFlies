@@ -468,6 +468,26 @@ document.getElementById("reset").addEventListener("click", function (e) {
 });
 
 // -----------------------------------------------------------------------
+// Event: Reset wifi config and reboot
+// -----------------------------------------------------------------------
+document.getElementById("wifi_reset").addEventListener("click", function (e) {
+
+  if (confirm("CAUTION: Do you really want to Reset Wifi config ? The system will restart as access point")) {
+    var r = new XMLHttpRequest();
+    r.open("POST", "wifireset", true);
+    r.onreadystatechange = function () {
+      if (r.readyState != 4 || r.status != 200)
+        return;
+      var str = r.responseText;
+      console.log(str);
+      if (str !== 0)
+        document.getElementById("wifi_reset").innerHTML = "Resetting wifi...";
+    };
+    r.send();
+  }
+});
+
+// -----------------------------------------------------------------------
 // Event: Restart
 // -----------------------------------------------------------------------
 document.getElementById("restart").addEventListener("click", function (e) {
