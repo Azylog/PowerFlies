@@ -34,6 +34,7 @@ api:
 
 # https://esphome.io/components/ota.html
 ota:
+  - platform: esphome
     on_error:
         then:
             - button.press: restart_button
