@@ -1,8 +1,12 @@
 {
   "chipFamily": "ESP32",
+  "ota": {
+    "path": "powerflie-esp32/powerflie-esp32.ota.bin",
+    "md5": "b66208ef8da1b6d71715ab8764559e58"
+  },
   "parts": [
     {
-      "path": "powerflie-esp32/powerflie-esp32.bin",
+      "path": "powerflie-esp32/powerflie-esp32.factory.bin",
       "offset": 0
     }
   ]
